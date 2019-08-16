@@ -3,8 +3,8 @@ module.exports = {
     client: "sqlite3",
     useNullAsDefault: true,
     connection: {
-      // changes to use resources.db3
-      filename: "./data/resources.db3",
+      // changes to use projects.db3
+      filename: "./data/projects.db3",
     },
     migrations: {
       directory: "./data/migrations",
