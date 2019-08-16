@@ -53,7 +53,7 @@ join tables by having a foreign key to a primary key
 
 ## Minimum Viable Product
 
-Take the steps necessary to complete the project from scratch. Start by initializing your project with a `package.json` and go from there.
+x Take the steps necessary to complete the project from scratch. Start by initializing your project with a `package.json` and go from there.
 
 Complete the following tasks:
 
