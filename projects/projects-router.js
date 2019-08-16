@@ -14,7 +14,16 @@ router.get("/", (req, res) => {
   projectsModel
     .getProjects()
     .then(projects => {
-      res.status(200).json(projects);
+      res.status(200).json(
+        projects.map(project => {
+          // check the project_completion value, if it is 1 or truthy, it means it's completed, and we'll change the object to display a completed value
+          if (project.project_completion) {
+            return { ...project, project_completion: true };
+          }
+          // the if statement above wil run and immediately stop because of the return, otherwise we'll set to project_completion to false. we can omit the else or another if statement, as the code below will run as a fallback if project_completion isn't true
+          return { ...project, project_completion: false };
+        }),
+      );
     })
     .catch(error => {
       res.status(500);
