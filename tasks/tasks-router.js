@@ -14,7 +14,18 @@ const router = express.Router();
 router.get("/", (req, res) => {
   tasksModel
     .getTasks()
-    .then(tasks => res.status(200).json(tasks))
+    .then(tasks => {
+      res.status(200).json(
+        tasks.map(task => {
+          // if task_completion is true, return task but replace the task_completion key with a value of true
+          if (task.task_completion) {
+            return { ...task, task_completion: true };
+          }
+          // otherwise, change task_completion to false. we can leave out an else or if statement because if task_completion is true, the if statement above will be run
+          return { ...task, task_completion: false };
+        }),
+      );
+    })
     .catch(err => res.status(500).json({ error: "Couldn't retrieve tasks" }));
 });
 

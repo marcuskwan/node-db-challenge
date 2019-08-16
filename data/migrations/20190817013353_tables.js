@@ -14,7 +14,7 @@ exports.up = function(knex) {
         tbl.text("project_description");
         // completed field
         tbl
-          .boolean("completed")
+          .boolean("project_completion")
           // can't be null
           .notNullable()
           // default to false
@@ -33,7 +33,7 @@ exports.up = function(knex) {
         tbl.text("task_notes");
         // required completed field
         tbl
-          .boolean("completed")
+          .boolean("task_completion")
           // required
           .notNullable()
           // default value should be false
