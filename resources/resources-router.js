@@ -1,35 +1,12 @@
 // list of endpoint purposes
-// adding projects.
-// retrieving a list of projects.
+// adding resources.
+// retrieving a list of resources.
 
 const express = require("express");
 
-const projectsModel = require("./projects-model.js");
+const resourcesModel = require("./resources-model.js");
 
 const router = express.Router();
-
-// GET requests
-// GET all projects
-router.get("/", (req, res) => {
-  projectsModel
-    .getProjects()
-    .then(projects => {
-      res.status(200).json(projects);
-    })
-    .catch(error => {
-      res.status(500);
-    });
-});
-
-// POST requests
-// add new project
-router.post("/", (req, res) => {
-  const newProjectData = req.body;
-  projectsModel
-    .addProject(newProjectData)
-    .then(newProjectId => res.status(200).json(newProjectId))
-    .catch(err => res.status(500).json({ error: "Failed to add new project" }));
-});
 
 // GET requests
 // GET all resources

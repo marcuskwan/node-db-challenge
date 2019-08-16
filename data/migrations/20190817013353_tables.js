@@ -56,6 +56,8 @@ exports.up = function(knex) {
         // name field
         tbl
           .string("name", 128)
+          // must be unique
+          .unique()
           // required
           .notNullable();
         // optional description field
