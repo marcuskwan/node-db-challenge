@@ -7,11 +7,11 @@ exports.up = function(knex) {
         tbl.increments();
         // name field
         tbl
-          .string("name", 128)
+          .string("project_name", 128)
           // name is required
           .notNullable();
         // description field
-        tbl.text("description");
+        tbl.text("project_description");
         // completed field
         tbl
           .boolean("completed")
@@ -26,11 +26,11 @@ exports.up = function(knex) {
         tbl.increments();
         // required description field
         tbl
-          .text("description")
+          .text("task_description")
           // required
           .notNullable();
         // optional notes field
-        tbl.text("notes");
+        tbl.text("task_notes");
         // required completed field
         tbl
           .boolean("completed")
@@ -55,13 +55,13 @@ exports.up = function(knex) {
         tbl.increments();
         // name field
         tbl
-          .string("name", 128)
+          .string("resource_name", 128)
           // must be unique
           .unique()
           // required
           .notNullable();
         // optional description field
-        tbl.text("description");
+        tbl.text("resource_description");
         // foreign key
         tbl
           .integer("project_id")

@@ -14,16 +14,17 @@ const router = express.Router();
 router.get("/", (req, res) => {
   tasksModel
     .getTasks()
-    .then(tasks => res.json(200).json(tasks))
+    .then(tasks => res.status(200).json(tasks))
     .catch(err => res.status(500).json({ error: "Couldn't retrieve tasks" }));
 });
 
 // POST requests
 // add new task
 router.post("/", (req, res) => {
+  const newTaskData = req.body;
   tasksModel
-    .addTask()
-    .then(newTaskId => res.json(200).json(newTaskId))
+    .addTask(newTaskData)
+    .then(newTaskId => res.status(200).json(newTaskId))
     .catch(err => res.status(500).json({ error: "Couldn't add task" }));
 });
 
